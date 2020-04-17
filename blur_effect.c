@@ -170,7 +170,7 @@ int main(int argc, char* argv[]) {
     int kernel_size;
 
     //Extracción de tamaño del kernel 
-    kernel_size = atoi(argv[4]);
+    kernel_size = atoi(argv[3]);
     size_t mid_size = kernel_size / 2 ;
 
     //Asignación dinámica de espacio para generar una matriz 
@@ -194,7 +194,7 @@ int main(int argc, char* argv[]) {
     //Asignación de espacio para imágen con filtro aplicado
     unsigned char* blurred_img = (unsigned char*)malloc(sizeof(unsigned char) * blurred_image_size);
 
-    int n_threads = atoi(argv[3]);
+    int n_threads = atoi(argv[4]);
 
     struct convolution_args args[n_threads];
 

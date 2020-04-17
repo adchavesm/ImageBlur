@@ -171,6 +171,14 @@ int main(int argc, char* argv[]) {
 
     //Extracción de tamaño del kernel 
     kernel_size = atoi(argv[3]);
+
+    //Tamaño de kernel debe ser impar
+    if(kernel_size % 2 == 0){
+
+        perror("Tamaño de kernel debe ser impar!\n");
+        return EXIT_FAILURE;
+    }
+
     size_t mid_size = kernel_size / 2 ;
 
     //Asignación dinámica de espacio para generar una matriz 

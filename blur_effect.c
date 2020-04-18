@@ -4,6 +4,7 @@
 #include <math.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include <string.h>
 
 //Librerias de terceros usadas para manipulación de imágenes png, jpg, etc.
 #define STB_IMAGE_IMPLEMENTATION
@@ -255,10 +256,27 @@ int main(int argc, char* argv[]) {
     long seconds = (end.tv_sec - start.tv_sec);
     long micros = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
 
-    double seconds_d = (double)micros / pow(10,6);
+    double seconds_d = (double)micros / pow(10,6);  
 
     //Devolver tiempo de ejecución del programa
     printf("\nTiempo de ejecucion: %f segundos\n", seconds_d);
 
+    FILE * fp;
+    int i;  
+    size_t file_length = strlen(argv[1]) + strlen(argv[3]) + 6;
+    char * fileName = (char *)malloc(sizeof(char)*file_length);
+    fileName[0] = '\0';
+    strcat(fileName, argv[1]);
+    strcat(fileName, "_");
+    strcat(fileName, argv[3]);
+    strcat(fileName, ".txt");
+
+    //Abrir archivo para registrar el tiempo medido
+    fp = fopen (fileName,"a");
+    
+    fprintf (fp, "%f ", seconds_d);
+   
+    fclose (fp);
+   
     return EXIT_SUCCESS;
 }

@@ -68,7 +68,7 @@ void executeConvolution(struct convolution_args args){
     double** kernel = args.kernel;
 
     //Loop que itera sobre el rango de pixeles dado como argumentos
-    for(; p != img+(endPixel*channels); p += channels, b_p += blur_channels, ++current_pixel) {
+    for(; p != img+((endPixel+1)*channels); p += channels, b_p += blur_channels, ++current_pixel) {
         
         valueRed = 0;
         valueGreen = 0;
